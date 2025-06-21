@@ -1,0 +1,657 @@
+/* Home page styles */
+.home-container {
+  margin-top: 20px;
+}
+
+.home-sections {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Left section - Daily Streak */
+.daily-streak-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.streak-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.streak-icon-large {
+  margin-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.thunder-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.streak-count-wrapper {
+  display: flex;
+  align-items: baseline;
+}
+
+.streak-count {
+  font-size: 40px;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.streak-label {
+  font-size: 18px;
+}
+
+/* Days of week styles */
+.days-of-week {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.day-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: center;
+}
+
+.day-circle {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.day-circle.active {
+  background: #e3f2fd;
+  border: 2px solid #4a90e2;
+}
+
+.day-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-thunder-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.day-name {
+  font-size: 12px;
+  color: #777;
+}
+
+/* Right Section - Cards */
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.card-tag {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #ffecb3;
+  color: #ff8f00;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.card h2 {
+  margin-bottom: 15px;
+  font-size: 22px;
+}
+
+.card-metrics {
+  display: flex;
+  gap: 30px;
+  margin: 20px 0;
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-label {
+  font-size: 14px;
+  color: #777;
+}
+
+.metric-value {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.start-button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.start-button:hover {
+  background: #3a7bc8;
+}
+
+.quiz-icon {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.card-info {
+  margin: 8px 0;
+  color: #666;
+}
+
+/* HomeNonLogin styles */
+.home-nonlogin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.home-nonlogin-content {
+  text-align: center;
+}
+
+.home-nonlogin-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.home-nonlogin-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.home-nonlogin-features {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.feature {
+  background: white;
+  border-radius: 10px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  width: 300px;
+  text-align: center;
+  transition: transform 0.3s;
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.feature-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.feature h3 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.feature p {
+  color: #666;
+}
+
+.home-nonlogin-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.login-button,
+.register-button {
+  padding: 12px 30px;
+  border-radius: 5px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: none;
+}
+
+.login-button {
+  background: #4a90e2;
+  color: white;
+}
+
+.login-button:hover {
+  background: #3a7bc8;
+}
+
+.register-button {
+  background: white;
+  border: 2px solid #4a90e2;
+  color: #4a90e2;
+}
+
+.register-button:hover {
+  background: #f5f9ff;
+}
+
+/* Quick login form styles */
+.quick-login {
+  list-style-type: none;
+  padding: 0;
+}
+
+.quick-login li {
+  margin-bottom: 15px;
+}
+
+.quick-login input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.quick-login button {
+  width: 100%;
+  padding: 12px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.quick-login button:hover {
+  background: #3a7bc8;
+}
+
+.register-link {
+  margin-left: 5px;
+  color: #4a90e2;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.register-link:hover {
+  text-decoration: underline;
+}
+
+.forgot-password {
+  color: #4a90e2;
+  text-decoration: none;
+  font-size: 14px;
+  display: inline-block;
+  margin-top: 5px;
+  transition: color 0.2s;
+}
+
+.forgot-password:hover {
+  color: #3a7bc8;
+  text-decoration: underline;
+}
+
+/* Site structure */
+.site-wrapper {
+  width: 100%;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Welcome section styles */
+.welcome-section {
+  background-color: #f9f9f9;
+  padding: 50px 0;
+  margin-bottom: 40px;
+}
+
+.site-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.non-login-welcome {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.home-tifo {
+  width: 50%;
+  list-style: none;
+  padding: 0;
+}
+
+.home-tifo li {
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: #333;
+  font-weight: 500;
+  padding-left: 10px;
+  border-left: 4px solid #4a90e2;
+}
+
+.quick-login {
+  width: 40%;
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.quick-login li:first-child {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #333;
+  text-align: center;
+}
+
+.quick-login input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: border-color 0.2s;
+}
+
+.quick-login input:focus {
+  border-color: #4a90e2;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
+}
+
+.quick-login button {
+  width: 100%;
+  padding: 14px;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.quick-login button:hover {
+  background: #3a7bc8;
+}
+
+/* Exam section styles */
+.exam-section {
+  padding: 20px 0 50px;
+}
+
+.exam-section h2 {
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #333;
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.exam-section h2:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 60px;
+  height: 4px;
+  background: #4a90e2;
+}
+
+.exam-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+.exam-item {
+  background: white;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.exam-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.exam-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.exam-desc {
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.exam-button {
+  background: #4a90e2;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.exam-button:hover {
+  background: #3a7bc8;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .non-login-welcome {
+    flex-direction: column;
+  }
+  
+  .home-tifo, .quick-login {
+    width: 100%;
+  }
+  
+  .home-tifo {
+    margin-bottom: 30px;
+  }
+  
+  .exam-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+.streak-text {
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+.days-of-week {
+  margin-top: 20px;
+}
+
+.day-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.day-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #eaeaea;
+}
+
+.day-circle.active {
+  background-color: transparent;
+  border: 2px solid #000;
+  color: #000;
+}
+
+.day-circle.completed {
+  background-color: transparent;
+  border: 1px solid #eaeaea;
+}
+
+.day-circle.completed .day-icon {
+  color: #000;
+}
+
+.day-name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.day-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-thunder-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Right section - Cards */
+.right-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card-tag {
+  background-color: #e8f5e9;
+  color: #2e7d32;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.card-icon {
+  margin-bottom: 10px;
+  display: inline-block;
+}
+
+.card h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+
+.card-info {
+  margin-bottom: 20px;
+  color: #444;
+}
+
+.card-metrics {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.metric-item {
+  margin-bottom: 15px;
+}
+
+.metric-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.metric-value {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.start-button {
+  background-color: #2e7d32;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  float: right;
+  transition: background-color 0.2s ease;
+}
+
+.start-button:hover {
+  background-color: #1b5e20;
+}
+
+/* Quiz card */
+.quiz-icon {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+/* Mobile responsive styles */
+@media (max-width: 768px) {
+  .home-sections {
+    grid-template-columns: 1fr;
+  }
+}

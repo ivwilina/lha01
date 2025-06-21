@@ -1,0 +1,83 @@
+[
+  {
+    "word": "cat",
+    "partOfSpeech": "noun",
+    "IPA": "/kæt/",
+    "meaning": "con mèo",
+    "example": "The cat is sleeping on the sofa.",
+    "exampleForQuiz": "The ____ is sleeping on the sofa."
+  },
+  {
+    "word": "dog",
+    "partOfSpeech": "noun",
+    "IPA": "/dɒɡ/",
+    "meaning": "con chó",
+    "example": "My dog loves to play in the garden.",
+    "exampleForQuiz": "My ____ loves to play in the garden."
+  },
+  {
+    "word": "lion",
+    "partOfSpeech": "noun",
+    "IPA": "/ˈlaɪ.ən/",
+    "meaning": "sư tử",
+    "example": "The lion is known as the king of the jungle.",
+    "exampleForQuiz": "The ____ is known as the king of the jungle."
+  },
+  {
+    "word": "elephant",
+    "partOfSpeech": "noun",
+    "IPA": "/ˈɛl.ɪ.fənt/",
+    "meaning": "con voi",
+    "example": "An elephant has a long trunk.",
+    "exampleForQuiz": "An ____ has a long trunk."
+  },
+  {
+    "word": "tiger",
+    "partOfSpeech": "noun",
+    "IPA": "/ˈtaɪ.ɡər/",
+    "meaning": "con hổ",
+    "example": "The tiger is a strong animal.",
+    "exampleForQuiz": "The ____ is a strong animal."
+  },
+  {
+    "word": "bear",
+    "partOfSpeech": "noun",
+    "IPA": "/beər/",
+    "meaning": "con gấu",
+    "example": "A bear can run very fast.",
+    "exampleForQuiz": "A ____ can run very fast."
+  },
+  {
+    "word": "monkey",
+    "partOfSpeech": "noun",
+    "IPA": "/ˈmʌŋ.ki/",
+    "meaning": "con khỉ",
+    "example": "Monkeys like to eat bananas.",
+    "exampleForQuiz": "____ like to eat bananas."
+  },
+  {
+    "word": "rabbit",
+    "partOfSpeech": "noun",
+    "IPA": "/ˈræb.ɪt/",
+    "meaning": "con thỏ",
+    "example": "The rabbit is white and fluffy.",
+    "exampleForQuiz": "The ____ is white and fluffy."
+  },
+  {
+    "word": "wolf",
+    "partOfSpeech": "noun",
+    "IPA": "/wʊlf/",
+    "meaning": "con sói",
+    "example": "A wolf lives in the forest.",
+    "exampleForQuiz": "A ____ lives in the forest."
+  },
+  {
+    "word": "fox",
+    "partOfSpeech": "noun",
+    "IPA": "/fɒks/",
+    "meaning": "con cáo",
+    "example": "The fox has a bushy tail.",
+    "exampleForQuiz": "The ____ has a bushy tail."
+  }
+  // ... 20 từ còn lại, sẽ bổ sung nếu bạn xác nhận đúng định dạng
+]

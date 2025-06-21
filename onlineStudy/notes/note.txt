@@ -1,0 +1,52 @@
+Rapid TOEIC
+  Flash Card:
+  - Từ vựng: Từ, loại từ, nghĩa từ, ví dụ minh hoạ, chủ đề
+  - Random
+  - Tạo list từ của bản thân
+  - Có list từ sẵn
+  - Đánh giá từ
+  - Thống kê số lượng từ đã học
+  - List từ đã nhớ
+
+**important:
+  thông tin về list từ lưu theo dạng sql
+  từ trong list lưu nosql
+
+  {
+    "id" : "usr1_1",
+    "name" : "list của tôi",
+    "des" : "example",
+    "language" : "tiếng em",
+    "words" : {
+      {"id":1, "word": "gender", "meaning": "giới tính", "example": "male is a gender", "difficulty": "easy"},
+    }
+  }
+
+  Thư viện đề thi:
+  - Các đề thi có sẵn (có phân loại):
+   + id
+   + tên
+   + số câu hỏi
+   + des: thời gian, số người đã luyện thi, bình luận
+   + chỉ những người đã làm mới có thể bình luận về đề thi đó
+  - Làm bài thi: câu hỏi - nosql
+    + Có chế độ luyện tập và thi
+    + Đánh dấu câu sai, có thể load câu sai để làm lại
+    + Thống kê bài vừa làm (điểm, câu sai, câu đúng, câu không chọn đáp án, thời gian)
+  - Thông kế điểm của các bài thi đã làm, đã luyện
+  - Tạo mục tiêu hàng ngày: 
+    + Làm bao nhiêu đề
+    + Đạt bao nhiêu điểm
+    + Học bao nhiêu từ
+    + Thống kê kết quả
+  - Trang chủ:
+    * chưa đăng nhập: 
+      + các bài thi phổ biến
+      + làm bài (demo 10-15 câu) có thống kê kết quả nhưng không lưu lại
+    * đã đăng nhập:
+      + Thông tin cá nhân
+      + Thống kê kết quả đã làm
+      + Một số bài thi phổ biến
+      + Mục tiêu hàng ngày đã hoàn thành chưa
+
+
