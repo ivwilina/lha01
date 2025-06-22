@@ -1,0 +1,268 @@
+.flashcard-learning-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  margin-bottom: 40px;
+  width: 90%;
+  max-width: 900px;
+}
+
+.header h1 {
+  font-size: 28px;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.word-count {
+  color: #4CAF50;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.flashcard-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* Flashcard styling with flip animation */
+.flashcard {
+  width: 100%;
+  height: 350px;
+  perspective: 1000px;
+  cursor: pointer;
+  margin: 0 auto;
+  position: relative;
+  transition: transform 0.15s ease;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  overflow: hidden;
+}
+
+.flashcard:active {
+  transform: scale(0.98);
+}
+
+.flashcard-front,
+.flashcard-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.6s;
+  background-color: white;
+}
+
+.front-content, 
+.back-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.flashcard-front {
+  transform: rotateY(0deg);
+  background-color: #fff;
+  z-index: 1;
+}
+
+.flashcard-back {
+  transform: rotateY(180deg);
+  background-color: #fff;
+  z-index: 0;
+}
+
+.flashcard.flipped .flashcard-front {
+  transform: rotateY(180deg);
+  z-index: 0;
+}
+
+.flashcard.flipped .flashcard-back {
+  transform: rotateY(0deg);
+  z-index: 1;
+}
+
+/* Word styling on front side */
+.audio-button-container {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.audio-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.3s;
+}
+
+.audio-button:hover {
+  background-color: #f0f0f0;
+}
+
+.audio-button img {
+  width: 24px;
+  height: 24px;
+}
+
+.word-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.word-text {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.word-phonetic {
+  font-size: 20px;
+  color: #666;
+  text-align: center;
+}
+
+/* Word details styling on back side */
+.back-content {
+  width: 80%;
+  text-align: left;
+  padding: 20px;
+}
+
+.part-of-speech {
+  font-size: 18px;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.meaning {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.example {
+  font-size: 16px;
+  font-style: italic;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+/* Action buttons */
+.flashcard-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.action-button {
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+}
+
+.mark-learned-button:hover,
+.next-word-button:hover {
+  background-color: #388e3c;
+}
+
+/* Loading and error states */
+.flashcard-loading, 
+.flashcard-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  text-align: center;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border-left-color: #4CAF50;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.retry-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .flashcard {
+    width: 90%;
+    height: 350px;
+  }
+  
+  .word-text {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .flashcard-actions {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .action-button {
+    width: 100%;
+  }
+}

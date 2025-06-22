@@ -9,6 +9,7 @@ import HomeNonLogin from './pages/home/HomeNonLogin'
 import FlashcardHome from './pages/flashcard/FlashcardHome'
 import FlashcardDetail from './pages/flashcard/FlashcardDetail'
 import FlashcardWords from './pages/flashcard/FlashcardWords'
+import FlashcardLearning from './pages/flashcard/FlashcardLearning'
 
 
 function App() {
@@ -26,7 +27,7 @@ function App() {
               <Route path="/flashcard" element={<FlashcardHome />} />
               <Route path="/flashcard/:categoryId" element={<FlashcardDetail />} />
               <Route path="/flashcard/:categoryId/words" element={<FlashcardWords />} />
-              <Route path="/flashcard/:categoryId/learn" element={<FlashcardHome />} />
+              <Route path="/flashcard/:categoryId/learn" element={<FlashcardLearning />} />
             </Routes>
           </div>
         </div>

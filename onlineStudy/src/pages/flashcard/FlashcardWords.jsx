@@ -188,7 +188,7 @@ const FlashcardWords = () => {
             // Xử lý trường hợp wordItem là object
             // Ưu tiên lấy các thuộc tính thông dụng
             const wordText = wordItem.word || wordItem.Word || wordItem.name || wordItem.text || wordItem.englishText || 'Unknown';
-            const phonetic = wordItem.phonetic || wordItem.pronunciation || '';
+            const phonetic = wordItem.phonetic || wordItem.pronunciation || wordItem.IPA || '';
             const partOfSpeech = wordItem.partOfSpeech || wordItem.type || wordItem.wordType || wordItem.pos || 'Not specified';
             const meaning = wordItem.meaning || wordItem.definition || wordItem.translation || wordItem.vietnamese || wordItem.vietnameseText || 'No meaning provided';
             const example = wordItem.example || wordItem.sampleSentence || wordItem.sample || wordItem.exampleSentence || '';
@@ -197,7 +197,7 @@ const FlashcardWords = () => {
               <div key={wordItem._id || `word-${index}`} className="word-card">
                 <div className="word-header">
                   <h2 className="word-text">
-                    {wordText} {phonetic && <span className="phonetic">/{phonetic}/</span>}
+                    {wordText} {phonetic && <span className="phonetic">{phonetic}</span>}
                   </h2>
                   <button 
                     className="pronunciation-button"

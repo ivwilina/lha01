@@ -1,5 +1,5 @@
 const Category = require('../models/category.model');
-
+const Word = require('../models/word.model');
 
 //* Create a new category
 const create_category = async (req, res) => {
@@ -38,45 +38,11 @@ const get_words_in_category = async (req, res) => {
       return res.status(404).send("Category not found");
     }
     
-    // Kiểm tra xem từ vựng có được lưu dưới dạng array of objects hay không
-    if (Array.isArray(category.words)) {
-      // Kiểm tra xem mỗi phần tử có phải là object với đủ thuộc tính không
-      const firstWord = category.words[0];
-      if (firstWord && typeof firstWord === 'object') {
-        // Nếu các từ đã có đầy đủ thông tin, trả về toàn bộ mảng
-        return res.status(200).json(category.words);
-      }
-    }
-    
-    // Nếu không phải object đầy đủ, trả về mảng các từ mẫu
-    const sampleWords = [
-      { 
-        _id: '1', 
-        word: 'accept', 
-        phonetic: 'ək\'sept', 
-        partOfSpeech: 'Verb', 
-        meaning: 'nhận, chấp nhận',
-        example: 'We accept payment by Visa Electron, Visa, Switch, Maestro, Mastercard, JCB, Solo, check or cash.'
-      },
-      {
-        _id: '2', 
-        word: 'algorithm', 
-        phonetic: 'ˈælɡərɪðm', 
-        partOfSpeech: 'Noun', 
-        meaning: 'thuật toán',
-        example: 'The search engine uses a complex algorithm to rank websites.'
-      },
-      {
-        _id: '3', 
-        word: 'database', 
-        phonetic: 'ˈdeɪtəbeɪs', 
-        partOfSpeech: 'Noun', 
-        meaning: 'cơ sở dữ liệu',
-        example: 'The application stores all user information in a secure database.'
-      }
-    ];
-    
-    res.status(200).json(sampleWords);
+    const wordsId = category.words;
+
+    const words = await Word.find({ _id: { $in: wordsId } });
+
+    res.status(200).json(words);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

@@ -65,8 +65,7 @@ const Home = () => {
         </div>
 
         {/* Right Section - Cards */}
-        <div className="right-section">
-          {/* Flashcard Card */}
+        <div className="right-section">          {/* Flashcard Card */}
           <div className="card">
             <div className="card-tag">RECOMMENDED</div>
             <h2>Information Technology</h2>
@@ -82,9 +81,14 @@ const Home = () => {
               </div>
             </div>
 
-            <Link to="/flashcard">
-              <button className="start-button">Start</button>
-            </Link>
+            <div className="card-actions">
+              <Link to="/flashcard">
+                <button className="start-button">Start</button>
+              </Link>
+              <Link to="/flashcard/5/learn">
+                <button className="continue-button">Continue Learning</button>
+              </Link>
+            </div>
           </div>
 
           {/* Quiz Card */}

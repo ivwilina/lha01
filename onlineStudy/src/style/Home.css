@@ -151,18 +151,20 @@
 }
 
 .start-button {
-  background: #4a90e2;
+  background: #4CAF50;
   color: white;
   border: none;
-  padding: 10px 25px;
-  border-radius: 5px;
+  border-radius: 50px;
+  padding: 12px 20px;
   font-size: 16px;
+  font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: background-color 0.3s;
+  width: 100%;
 }
 
 .start-button:hover {
-  background: #3a7bc8;
+  background: #388e3c;
 }
 
 .quiz-icon {
@@ -484,6 +486,36 @@
 
 .exam-button:hover {
   background: #3a7bc8;
+}
+
+/* Card actions */
+.card-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.card-actions a {
+  flex: 1;
+  text-decoration: none;
+}
+
+.continue-button {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.continue-button:hover {
+  background-color: #1976D2;
 }
 
 /* Responsive styles */
