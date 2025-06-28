@@ -17,83 +17,78 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
-.streak-header {
+/* Home page streak section styles - specific to home page layout */
+.daily-streak-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Home page specific streak text */
+.home-streak-text {
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 25px;
+}
+
+/* Days of week display - specific to home page */
+.home-days-of-week {
+  margin-top: 20px;
+}
+
+.home-day-item {
   display: flex;
   align-items: center;
   margin-bottom: 15px;
 }
 
-.streak-icon-large {
-  margin-right: 15px;
-  display: flex;
-  align-items: center;
-}
-
-.thunder-icon {
+.home-day-circle {
   width: 40px;
   height: 40px;
-}
-
-.streak-count-wrapper {
-  display: flex;
-  align-items: baseline;
-}
-
-.streak-count {
-  font-size: 40px;
-  font-weight: bold;
-  margin-right: 8px;
-}
-
-.streak-label {
-  font-size: 18px;
-}
-
-/* Days of week styles */
-.days-of-week {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.day-item {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-items: center;
-}
-
-.day-circle {
-  width: 32px;
-  height: 32px;
   border-radius: 50%;
-  background: #f5f5f5;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5px;
+  margin-right: 20px;
+  background-color: #f7f7f7;
+  border: 1px solid #eaeaea;
 }
 
-.day-circle.active {
-  background: #e3f2fd;
+.home-day-circle.active {
+  background-color: transparent;
   border: 2px solid #4a90e2;
+  color: #4a90e2;
 }
 
-.day-icon {
+.home-day-circle.completed {
+  background: linear-gradient(135deg, #FFD54F, #FFA726);
+  border: 2px solid #FF9800;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+}
+
+.home-day-circle.completed .day-icon {
+  color: #e65100;
+}
+
+.home-day-circle.completed .day-thunder-icon {
+  filter: brightness(0) saturate(100%) invert(23%) sepia(88%) saturate(3207%) hue-rotate(14deg) brightness(96%) contrast(99%);
+}
+
+.home-day-name {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.home-day-icon {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.day-thunder-icon {
-  width: 16px;
-  height: 16px;
-}
-
-.day-name {
-  font-size: 12px;
-  color: #777;
+.home-day-thunder-icon {
+  width: 20px;
+  height: 20px;
 }
 
 /* Right Section - Cards */
@@ -537,64 +532,7 @@
   }
 }
 
-.streak-text {
-  font-size: 18px;
-  margin-top: 5px;
-  margin-bottom: 25px;
-}
 
-.days-of-week {
-  margin-top: 20px;
-}
-
-.day-item {
-  display: flex;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.day-circle {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 20px;
-  background-color: #f7f7f7;
-  border: 1px solid #eaeaea;
-}
-
-.day-circle.active {
-  background-color: transparent;
-  border: 2px solid #000;
-  color: #000;
-}
-
-.day-circle.completed {
-  background-color: transparent;
-  border: 1px solid #eaeaea;
-}
-
-.day-circle.completed .day-icon {
-  color: #000;
-}
-
-.day-name {
-  font-size: 16px;
-  font-weight: 500;
-}
-
-.day-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.day-thunder-icon {
-  width: 20px;
-  height: 20px;
-}
 
 /* Right section - Cards */
 .right-section {

@@ -1,0 +1,130 @@
+/* UserStats.css - Reusable stats component */
+
+.user-stats-compact {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.user-stats-compact .stat-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 10px;
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+}
+
+.user-stats-compact .stat-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: white;
+}
+
+.user-stats-compact .stat-label {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.streak-icon-small {
+  width: 14px;
+  height: 14px;
+  filter: brightness(0) saturate(100%) invert(100%);
+}
+
+.user-stats-full {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+/* Inherit styles from Profile.css for full stats */
+.user-stats-full .stat-card {
+  background: linear-gradient(135deg, #f8f9ff 0%, #f1f3ff 100%);
+  border-radius: 12px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.3s ease;
+}
+
+.user-stats-full .stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+}
+
+.user-stats-full .stat-card.words-learned {
+  background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+  border-color: rgba(76, 175, 80, 0.2);
+}
+
+.user-stats-full .stat-card.categories-completed {
+  background: linear-gradient(135deg, #fff3e0 0%, #fef7ed 100%);
+  border-color: rgba(255, 152, 0, 0.2);
+}
+
+.user-stats-full .stat-card.streak-count {
+  background: linear-gradient(135deg, #fff8e1 0%, #fffbf0 100%);
+  border-color: rgba(255, 193, 7, 0.2);
+}
+
+.user-stats-full .stat-card.completion-rate {
+  background: linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%);
+  border-color: rgba(156, 39, 176, 0.2);
+}
+
+.user-stats-full .stat-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-stats-full .streak-icon {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) saturate(100%) invert(23%) sepia(88%) saturate(3207%) hue-rotate(14deg) brightness(96%) contrast(99%);
+}
+
+.user-stats-full .stat-content {
+  flex: 1;
+}
+
+.user-stats-full .stat-number {
+  font-size: 24px;
+  font-weight: 800;
+  color: #333;
+  line-height: 1;
+  margin-bottom: 5px;
+}
+
+.user-stats-full .stat-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .user-stats-full {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .user-stats-full .stat-card {
+    padding: 20px;
+    gap: 15px;
+  }
+  
+  .user-stats-compact {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

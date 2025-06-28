@@ -1,0 +1,334 @@
+/* Updated Streak.css for simplified streak system */
+
+.streak-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.streak-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.streak-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.streak-title-icon {
+  width: 32px;
+  height: 32px;
+  filter: brightness(0) saturate(100%) invert(23%) sepia(88%) saturate(3207%) hue-rotate(14deg) brightness(96%) contrast(99%);
+}
+
+.streak-title h2 {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.streak-count {
+  text-align: center;
+  background: linear-gradient(135deg, #FFD54F, #FFA726);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+}
+
+.streak-number {
+  display: block;
+  font-size: 48px;
+  font-weight: 800;
+  color: #e65100;
+  line-height: 1;
+}
+
+.streak-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e65100;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Current Status */
+.streak-status {
+  margin-bottom: 30px;
+}
+
+.status-card {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  border-left: 4px solid #FFD54F;
+}
+
+.status-card h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.status-info {
+  margin-bottom: 15px;
+}
+
+.status-active,
+.status-inactive {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.status-active {
+  color: #4CAF50;
+}
+
+.status-inactive {
+  color: #757575;
+}
+
+.status-icon {
+  font-size: 20px;
+}
+
+.streak-dates {
+  margin-top: 15px;
+}
+
+.streak-dates p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Weekly History */
+.streak-history {
+  margin-bottom: 30px;
+}
+
+.streak-history h3 {
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 18px;
+}
+
+.history-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+
+.history-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 8px;
+  border-radius: 8px;
+  background: #f5f5f5;
+  transition: all 0.3s ease;
+}
+
+.history-day.completed {
+  background: linear-gradient(135deg, #FFD54F, #FFA726);
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.3);
+}
+
+.history-day.today {
+  border: 2px solid #4a90e2;
+  background: #e3f2fd;
+}
+
+.history-day.completed.today {
+  border: 2px solid #FF9800;
+}
+
+.day-icon {
+  margin-bottom: 4px;
+}
+
+.day-thunder-icon {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) saturate(100%) invert(50%);
+}
+
+.history-day.completed .day-thunder-icon {
+  filter: brightness(0) saturate(100%) invert(23%) sepia(88%) saturate(3207%) hue-rotate(14deg) brightness(96%) contrast(99%);
+}
+
+.day-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  margin-bottom: 2px;
+}
+
+.history-day.completed .day-name {
+  color: #e65100;
+}
+
+.day-date {
+  font-size: 10px;
+  color: #999;
+}
+
+.history-day.completed .day-date {
+  color: #e65100;
+}
+
+/* Streak Info */
+.streak-info {
+  margin-bottom: 30px;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.streak-info h3 {
+  margin: 0 0 15px 0;
+  color: #333;
+  font-size: 18px;
+}
+
+.streak-info ul {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+.streak-info li {
+  padding: 8px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Call to Action */
+.streak-cta {
+  text-align: center;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.streak-cta h3 {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
+
+.streak-cta p {
+  margin: 0 0 25px 0;
+  opacity: 0.9;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.cta-button {
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background: #FFD54F;
+  color: #333;
+}
+
+.cta-button.primary:hover {
+  background: #FFCA28;
+  transform: translateY(-2px);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  color: white;
+  border: 2px solid white;
+}
+
+.cta-button.secondary:hover {
+  background: white;
+  color: #333;
+}
+
+/* Loading and Error States */
+.streak-loading {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #FFD54F;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.streak-error {
+  text-align: center;
+  padding: 40px 20px;
+  color: #f44336;
+  font-size: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .streak-container {
+    margin: 10px;
+    padding: 15px;
+  }
+  
+  .streak-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+  
+  .streak-number {
+    font-size: 36px;
+  }
+  
+  .history-grid {
+    gap: 6px;
+  }
+  
+  .history-day {
+    padding: 8px 4px;
+  }
+  
+  .day-thunder-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}

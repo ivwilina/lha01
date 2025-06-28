@@ -1,30 +1,43 @@
 import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/useAuth';
-import { getWordsInCategory } from '../../api/flashcardApi';
+import { getWordsInCategory, markWordAsLearned, getCategoryById } from '../../api/flashcardApi';
 import '../../style/FlashcardLearning.css';
 import volumeIcon from '../../assets/icons/volume-high-svgrepo-com.svg';
 
 const FlashcardLearning = () => {
   const { categoryId } = useParams();
   const navigate = useNavigate();
-  const { isAuthenticated } = useAuth();
-    const [words, setWords] = useState([]);
+  const { isAuthenticated, currentUser } = useAuth();
+  const [words, setWords] = useState([]);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [categoryInfo] = useState({
-    categoryTopic: 'Information Technology',
-    totalWords: 125
+  const [categoryInfo, setCategoryInfo] = useState({
+    categoryTopic: 'Loading...',
+    totalWords: 0
   });
+  const [markingAsLearned, setMarkingAsLearned] = useState(false);
 
   // Fetch words when component mounts
   useEffect(() => {
-    const fetchWords = async () => {
+    const fetchData = async () => {
       try {
         setLoading(true);
         
+        // Fetch category info
+        try {
+          const categoryData = await getCategoryById(categoryId);
+          setCategoryInfo({
+            categoryTopic: categoryData.categoryTopic || 'Unknown Category',
+            totalWords: categoryData.totalWords || 0
+          });
+        } catch (categoryError) {
+          console.warn('Could not fetch category info:', categoryError);
+        }
+        
+        // Fetch words
         let wordsData;
         try {
           wordsData = await getWordsInCategory(categoryId);
@@ -35,7 +48,7 @@ const FlashcardLearning = () => {
             { 
               _id: '1', 
               word: 'accept', 
-              phonetic: 'əkˈsept', 
+              IPA: 'əkˈsept', 
               partOfSpeech: 'Verb', 
               meaning: 'nhận, chấp nhận',
               example: 'We accept payment by Visa Electron, Visa, Switch, Maestro, Mastercard, JCB, Solo, check or cash.'
@@ -43,7 +56,7 @@ const FlashcardLearning = () => {
             {
               _id: '2', 
               word: 'algorithm', 
-              phonetic: 'ˈælɡərɪðm', 
+              IPA: 'ˈælɡərɪðm', 
               partOfSpeech: 'Noun', 
               meaning: 'thuật toán',
               example: 'The search engine uses a complex algorithm to rank websites.'
@@ -51,7 +64,7 @@ const FlashcardLearning = () => {
             {
               _id: '3', 
               word: 'database', 
-              phonetic: 'ˈdeɪtəbeɪs', 
+              IPA: 'ˈdeɪtəbeɪs', 
               partOfSpeech: 'Noun', 
               meaning: 'cơ sở dữ liệu',
               example: 'The application stores all user information in a secure database.'
@@ -67,7 +80,7 @@ const FlashcardLearning = () => {
         }
         
       } catch (err) {
-        console.error('Error fetching words:', err);
+        console.error('Error fetching data:', err);
         setError('Không thể tải từ vựng. Vui lòng thử lại sau.');
       } finally {
         setLoading(false);
@@ -78,7 +91,7 @@ const FlashcardLearning = () => {
     if (!isAuthenticated) {
       navigate('/login');
     } else {
-      fetchWords();
+      fetchData();
     }
   }, [categoryId, isAuthenticated, navigate]);
 
@@ -107,10 +120,35 @@ const FlashcardLearning = () => {
   };
 
   // Mark current word as learned
-  const handleMarkAsLearned = () => {
-    // In a real app, you would send this to backend
-    console.log(`Marked word ${words[currentWordIndex].word} as learned`);
-    handleNextWord();
+  const handleMarkAsLearned = async () => {
+    if (!currentUser || !currentUser._id) {
+      console.error('User not authenticated');
+      return;
+    }
+
+    const currentWord = words[currentWordIndex];
+    if (!currentWord || !currentWord._id) {
+      console.error('Invalid word data');
+      return;
+    }
+
+    try {
+      setMarkingAsLearned(true);
+      
+      // Mark word as learned in backend
+      await markWordAsLearned(currentUser._id, categoryId, currentWord._id);
+      
+      console.log(`Marked word "${currentWord.word}" as learned`);
+      
+      // Move to next word
+      handleNextWord();
+    } catch (error) {
+      console.error('Error marking word as learned:', error);
+      // Still proceed to next word even if marking fails
+      handleNextWord();
+    } finally {
+      setMarkingAsLearned(false);
+    }
   };
 
   if (loading) {
@@ -202,8 +240,9 @@ const FlashcardLearning = () => {
         <button 
           className="action-button mark-learned-button" 
           onClick={handleMarkAsLearned}
+          disabled={markingAsLearned}
         >
-          Mark as learned
+          {markingAsLearned ? 'Marking...' : 'Mark as learned'}
         </button>
         <button 
           className="action-button next-word-button" 

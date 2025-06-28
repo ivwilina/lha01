@@ -3,9 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/useAuth';
 import { 
   getCategoryById, 
-  getLearningRecordForCategory, 
   getWordsInCategory,
-  createLearningRecord 
+  createLearningRecord,
+  getLearningProgress
 } from '../../api/flashcardApi';
 import '../../style/FlashcardDetail.css';
 import flashcardIcon from '../../assets/icons/library-svgrepo-com.svg';
@@ -49,25 +49,26 @@ const FlashcardDetail = () => {
         // Cập nhật số lượng từ
         setTotalWords(totalWordsCount > 0 ? totalWordsCount : (categoryData?.totalWords || 0));
         
-        // Lấy thông tin learning record nếu có
+        // Lấy thông tin learning progress nếu có user
         if (currentUser && currentUser._id) {
           try {
-            const learningData = await getLearningRecordForCategory(currentUser._id, categoryId);
+            const progressData = await getLearningProgress(currentUser._id, categoryId);
             
-            if (learningData) {
-              setLearningRecord(learningData);
-              if (Array.isArray(learningData.remembered)) {
-                setRememberedWords(learningData.remembered.length);
-                console.log(`Found ${learningData.remembered.length} remembered words`);
-              } else {
-                setRememberedWords(0);
+            if (progressData) {
+              setTotalWords(progressData.totalWordsCount);
+              setRememberedWords(progressData.rememberedWordsCount);
+              console.log(`Progress: ${progressData.rememberedWordsCount}/${progressData.totalWordsCount} words learned`);
+              
+              // Set learning record info if exists
+              if (progressData.remembered && progressData.remembered.length > 0) {
+                setLearningRecord({ remembered: progressData.remembered });
               }
             } else {
-              console.log("No learning record found for this category");
+              console.log("No learning progress found for this category");
               setRememberedWords(0);
             }
           } catch (error) {
-            console.log('No learning record found:', error);
+            console.log('Error fetching learning progress:', error);
             setRememberedWords(0);
           }
         }
@@ -104,7 +105,7 @@ const FlashcardDetail = () => {
   
   // Xử lý khi click vào nút "Start a Quiz"
   const handleStartQuiz = () => {
-    navigate(`/quiz/${categoryId}`);
+    navigate(`/quiz/category/${categoryId}`);
   };
   
   if (loading) {
@@ -177,7 +178,7 @@ const FlashcardDetail = () => {
         </div>
       </div>
       
-      <div className="quiz-container">
+      <div className="flashcard-quiz-container">
         <div className="quiz-prompt">
           <span>Feeling confident?</span>
         </div>

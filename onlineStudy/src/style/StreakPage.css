@@ -1,0 +1,24 @@
+/* StreakPage.css - Styles for the streak page */
+
+.streak-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20px 0;
+}
+
+.streak-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .streak-page {
+    padding: 10px 0;
+  }
+
+  .streak-page-container {
+    padding: 0 10px;
+  }
+}

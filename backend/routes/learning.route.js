@@ -18,6 +18,18 @@ router.put("/update/:id", controller.update_learning_record_by_id);
 //* Add remembered words to a learning record
 router.put("/add-remembered/:id", controller.add_word_to_learning_record);
 
+//* Mark word as learned (convenient method)
+router.post("/mark-learned", controller.mark_word_as_learned);
+
+//* Remove word from learned list
+router.post("/unmark-learned", controller.unmark_word_as_learned);
+
+//* Get learning progress for specific user and category
+router.get("/progress/:userId/:categoryId", controller.get_learning_progress);
+
+//* Mark multiple words as learned (for quiz completion)
+router.post("/mark-multiple-learned", controller.mark_multiple_words_as_learned);
+
 //* Delete learning record by ID
 router.delete("/delete/:id", controller.delete_learning_record_by_id);
 

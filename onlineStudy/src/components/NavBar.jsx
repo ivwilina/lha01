@@ -5,7 +5,7 @@ import homeIcon from "../assets/icons/home-svgrepo-com.svg";
 import flashcardIcon from "../assets/icons/library-svgrepo-com.svg";
 import quizIcon from "../assets/icons/student-cap-svgrepo-com.svg";
 import hamburgerIcon from "../assets/icons/hamburger-menu-svgrepo-com.svg";
-import thunderIcon from "../assets/icons/thunder-2-svgrepo-com.svg";
+import StreakCounter from "./StreakCounter";
 import { useAuth } from "../context/useAuth";
 
 const NavBar = () => {
@@ -13,7 +13,7 @@ const NavBar = () => {
   const dropdownRef = useRef(null);
   const location = useLocation();
   const navigate = useNavigate();
-  const { currentUser, logout, isAuthenticated } = useAuth();
+  const { logout, isAuthenticated } = useAuth();
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -76,13 +76,7 @@ const NavBar = () => {
         </div>
 
         <div className="navbar-right">
-          {" "}
-          <div className="streak-counter">
-            <span className="streak-number">0</span>
-            <span className="streak-icon">
-              <img src={thunderIcon} alt="Streak" />
-            </span>
-          </div>
+          <StreakCounter />
           <div className="dropdown-container" ref={dropdownRef}>
             <button className="hamburger-button" onClick={toggleDropdown}>
               <img src={hamburgerIcon} alt="Menu" />

@@ -258,3 +258,280 @@ export const getWordsWithIds = async (wordIds) => {
     return [];
   }
 };
+
+/**
+ * Đánh dấu một từ đã học
+ * @param {string} userId - ID của user
+ * @param {string} categoryId - ID của category
+ * @param {string} wordId - ID của từ vựng
+ * @returns {Promise} Learning record đã cập nhật
+ */
+export const markWordAsLearned = async (userId, categoryId, wordId) => {
+  const response = await fetch(`${API_BASE_URL}/learning/mark-learned`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      userId,
+      categoryId,
+      wordId
+    }),
+  });
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể đánh dấu từ đã học');
+  }
+  
+  return data;
+};
+
+/**
+ * Bỏ đánh dấu từ đã học
+ * @param {string} userId - ID của user
+ * @param {string} categoryId - ID của category
+ * @param {string} wordId - ID của từ vựng
+ * @returns {Promise} Learning record đã cập nhật
+ */
+export const unmarkWordAsLearned = async (userId, categoryId, wordId) => {
+  const response = await fetch(`${API_BASE_URL}/learning/unmark-learned`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      userId,
+      categoryId,
+      wordId
+    }),
+  });
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể bỏ đánh dấu từ đã học');
+  }
+  
+  return data;
+};
+
+/**
+ * Lấy tiến độ học tập cho category cụ thể
+ * @param {string} userId - ID của user
+ * @param {string} categoryId - ID của category
+ * @returns {Promise} Thông tin tiến độ học tập
+ */
+export const getLearningProgress = async (userId, categoryId) => {
+  const response = await fetch(`${API_BASE_URL}/learning/progress/${userId}/${categoryId}`);
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể lấy tiến độ học tập');
+  }
+  
+  return data;
+};
+
+/**
+ * Đánh dấu nhiều từ đã học (dùng cho quiz)
+ * @param {string} userId - ID của user
+ * @param {string} categoryId - ID của category
+ * @param {Array} wordIds - Mảng ID của các từ vựng
+ * @returns {Promise} Learning record đã cập nhật
+ */
+export const markMultipleWordsAsLearned = async (userId, categoryId, wordIds) => {
+  const response = await fetch(`${API_BASE_URL}/learning/mark-multiple-learned`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      userId,
+      categoryId,
+      wordIds
+    }),
+  });
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể đánh dấu các từ đã học');
+  }
+  
+  return data;
+};
+
+/**
+ * Tạo quiz từ danh sách từ vựng
+ * @param {Array} wordIds - Mảng ID của các từ vựng
+ * @param {number} numOfQuestion - Số câu hỏi
+ * @returns {Promise} Quiz đã tạo
+ */
+export const createQuiz = async (wordIds, numOfQuestion) => {
+  const response = await fetch(`${API_BASE_URL}/quiz/create`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      words: wordIds,
+      numOfQuestion
+    }),
+  });
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể tạo quiz');
+  }
+  
+  return data;
+};
+
+/**
+ * Tạo quiz theo category (từ các từ đã học)
+ * @param {string} categoryId - ID của category
+ * @param {string} userId - ID của user
+ * @param {number} numOfQuestion - Số câu hỏi
+ * @returns {Promise} Quiz đã tạo
+ */
+export const createCategoryQuiz = async (categoryId, userId, numOfQuestion) => {
+  const response = await fetch(`${API_BASE_URL}/quiz/create/category`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      categoryId,
+      userId,
+      numOfQuestion
+    }),
+  });
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể tạo quiz theo category');
+  }
+  
+  return data;
+};
+
+/**
+ * Tạo quiz tổng hợp (từ tất cả từ đã học)
+ * @param {string} userId - ID của user
+ * @param {number} numOfQuestion - Số câu hỏi
+ * @returns {Promise} Quiz đã tạo
+ */
+export const createComprehensiveQuiz = async (userId, numOfQuestion) => {
+  const response = await fetch(`${API_BASE_URL}/quiz/create/comprehensive`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      userId,
+      numOfQuestion
+    }),
+  });
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể tạo quiz tổng hợp');
+  }
+  
+  return data;
+};
+
+/**
+ * Tạo quiz ngẫu nhiên (từ tất cả từ trong database)
+ * @param {number} numOfQuestion - Số câu hỏi
+ * @returns {Promise} Quiz đã tạo
+ */
+export const createRandomQuiz = async (numOfQuestion) => {
+  const response = await fetch(`${API_BASE_URL}/quiz/create/random`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      numOfQuestion
+    }),
+  });
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể tạo quiz ngẫu nhiên');
+  }
+  
+  return data;
+};
+
+/**
+ * Lấy quiz theo ID
+ * @param {string} quizId - ID của quiz
+ * @returns {Promise} Thông tin quiz
+ */
+export const getQuizById = async (quizId) => {
+  const response = await fetch(`${API_BASE_URL}/quiz/${quizId}`);
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể lấy thông tin quiz');
+  }
+  
+  return data;
+};
+
+/**
+ * Nộp bài quiz
+ * @param {string} quizId - ID của quiz
+ * @param {Array} answers - Mảng câu trả lời
+ * @param {string} userId - ID của user
+ * @param {string} categoryId - ID của category
+ * @returns {Promise} Kết quả quiz
+ */
+export const submitQuiz = async (quizId, answers, userId, categoryId) => {
+  const response = await fetch(`${API_BASE_URL}/quiz/${quizId}/submit`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      answers,
+      userId,
+      categoryId
+    }),
+  });
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể nộp bài quiz');
+  }
+  
+  return data;
+};
+
+/**
+ * Lấy lịch sử quiz của user
+ * @param {string} userId - ID của user
+ * @returns {Promise} Lịch sử quiz
+ */
+export const getUserQuizHistory = async (userId) => {
+  const response = await fetch(`${API_BASE_URL}/quiz/history/${userId}`);
+  
+  const data = await response.json();
+  
+  if (!response.ok) {
+    throw new Error(data.message || 'Không thể lấy lịch sử quiz');
+  }
+  
+  return data;
+};

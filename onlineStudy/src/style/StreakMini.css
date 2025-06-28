@@ -1,0 +1,106 @@
+/* StreakMini.css - Styles for the mini streak component */
+
+.streak-mini {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 16px;
+  color: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.streak-mini-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.streak-mini-fire {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fire-icon {
+  font-size: 24px;
+}
+
+.thunder-icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(78%) sepia(66%) saturate(476%) hue-rotate(359deg) brightness(105%) contrast(97%);
+}
+
+.streak-mini-count {
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFD54F;
+}
+
+.streak-mini-status {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.status-completed {
+  color: #4CAF50;
+  background: rgba(76, 175, 80, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.status-progress {
+  color: #FFD54F;
+  background: rgba(255, 213, 79, 0.2);
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 213, 79, 0.3);
+}
+
+.streak-mini-info {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.streak-info-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+/* Remove old progress and goals styling since we're simplifying */
+.mini-progress-bar,
+.mini-progress-fill,
+.mini-progress-text,
+.streak-mini-goals,
+.mini-goal {
+  display: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .streak-mini {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .streak-mini-header {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .fire-icon {
+    font-size: 20px;
+  }
+
+  .streak-mini-count {
+    font-size: 18px;
+  }
+}
