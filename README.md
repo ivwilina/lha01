@@ -601,9 +601,10 @@ This project is licensed under the **MIT License**. See LICENSE file for details
 
 **🎉 Cảm ơn bạn đã sử dụng Hệ thống học từ vựng tiếng Anh!**
 
-Made with ❤️ by LeHaiAnh Team
-Pay money: LeHaiAnh
-Design: seira
-Coding: seira
-Testing: seira
-Everything by seira ♥, fuck you LeHaiAnh!
+
+### Design: seira
+### Coding: seira
+### Testing: seira
+### Everything by seira ♥
+### Pay money: LeHaiAnh
+### Fuck you LeHaiAnh!
