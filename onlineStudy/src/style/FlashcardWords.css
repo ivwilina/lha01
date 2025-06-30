@@ -123,6 +123,9 @@
 
 .word-info {
   color: #4b5563;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .part-of-speech {

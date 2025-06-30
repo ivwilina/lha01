@@ -181,7 +181,7 @@
 }
 
 /* Action buttons */
-.flashcard-actions {
+.flashcard-learning-container .flashcard-actions {
   display: flex;
   flex-direction: column;
   gap: 10px;

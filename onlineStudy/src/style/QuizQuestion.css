@@ -28,37 +28,6 @@
   line-height: 1.4;
 }
 
-.word-info {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 12px;
-  padding: 12px;
-  background: #f7fafc;
-  border-radius: 8px;
-  border-left: 4px solid #4299e1;
-}
-
-.word-info .word {
-  font-size: 22px;
-  font-weight: 700;
-  color: #2b6cb0;
-}
-
-.word-info .ipa {
-  font-size: 16px;
-  color: #718096;
-  font-style: italic;
-}
-
-.word-info .pos {
-  font-size: 14px;
-  color: #a0aec0;
-  background: #e2e8f0;
-  padding: 2px 8px;
-  border-radius: 12px;
-}
-
 .example {
   margin-bottom: 20px;
   padding: 12px;
@@ -366,16 +335,7 @@
     margin-bottom: 8px;
   }
   
-  .word-info {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-  
-  .word-info .word {
-    font-size: 20px;
-  }
-  
+
   .hidden-word-display h3 {
     font-size: 24px;
     letter-spacing: 2px;

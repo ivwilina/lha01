@@ -39,42 +39,49 @@ import QuizRandom from './pages/quiz/QuizRandom'
 import StreakPage from './pages/streak/StreakPage'
 import Profile from './pages/profile/Profile'
 import AdminPanel from './pages/admin/AdminPanel'
+import { useAuth } from './context/useAuth'
+
+function AppRoutes() {
+  const { currentUser } = useAuth();
+  return (
+    <Routes>
+      {/* Admin route - không có NavBar */}
+      <Route path="/admin-system-panel-access" element={<AdminPanel />} />
+      {/* Routes khác với NavBar */}
+      <Route path="/*" element={
+        <>
+          <NavBar />
+          <div className="container">
+            <Routes>
+              <Route path="/" element={currentUser ? <Home /> : <HomeNonLogin />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/welcome" element={<HomeNonLogin />} />
+              <Route path="/flashcard" element={<FlashcardHome />} />
+              <Route path="/flashcard/:categoryId" element={<FlashcardDetail />} />
+              <Route path="/flashcard/:categoryId/words" element={<FlashcardWords />} />
+              <Route path="/flashcard/:categoryId/learn" element={<FlashcardLearning />} />
+              <Route path="/quiz" element={<QuizHome />} />
+              <Route path="/quiz/category/:categoryId" element={<QuizCategory />} />
+              <Route path="/quiz/comprehensive" element={<QuizComprehensive />} />
+              <Route path="/quiz/random" element={<QuizRandom />} />
+              <Route path="/streak" element={<StreakPage />} />
+              <Route path="/account" element={<Profile />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </div>
+        </>
+      } />
+    </Routes>
+  );
+}
 
 function App() {
   return (
     <Router>
       <AuthProvider>
         <div className="app">
-          <Routes>
-            {/* Admin route - không có NavBar */}
-            <Route path="/admin-system-panel-access" element={<AdminPanel />} />
-            
-            {/* Routes khác với NavBar */}
-            <Route path="/*" element={
-              <>
-                <NavBar />
-                <div className="container">
-                  <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/welcome" element={<HomeNonLogin />} />
-                    <Route path="/flashcard" element={<FlashcardHome />} />
-                    <Route path="/flashcard/:categoryId" element={<FlashcardDetail />} />
-                    <Route path="/flashcard/:categoryId/words" element={<FlashcardWords />} />
-                    <Route path="/flashcard/:categoryId/learn" element={<FlashcardLearning />} />
-                    <Route path="/quiz" element={<QuizHome />} />
-                    <Route path="/quiz/category/:categoryId" element={<QuizCategory />} />
-                    <Route path="/quiz/comprehensive" element={<QuizComprehensive />} />
-                    <Route path="/quiz/random" element={<QuizRandom />} />
-                    <Route path="/streak" element={<StreakPage />} />
-                    <Route path="/account" element={<Profile />} />
-                    <Route path="/profile" element={<Profile />} />
-                  </Routes>
-                </div>
-              </>
-            } />
-          </Routes>
+          <AppRoutes />
         </div>
       </AuthProvider>
     </Router>

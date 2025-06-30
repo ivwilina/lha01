@@ -140,7 +140,7 @@
 }
 
 /* Action buttons */
-.flashcard-actions {
+.flashcard-stats-container .flashcard-actions {
   display: flex;
   flex-direction: column;
   gap: 15px;

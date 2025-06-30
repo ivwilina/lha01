@@ -209,9 +209,9 @@ const FlashcardWords = () => {
                 </div>
                 
                 <div className="word-info">
-                  <p className="part-of-speech">Part of speech: {partOfSpeech}</p>
-                  <p className="meaning">Meaning: {meaning}</p>
-                  {example && <p className="example">Example: {example}</p>}
+                  <p className="part-of-speech">{partOfSpeech}</p>
+                  <p className="meaning">{meaning}</p>
+                  {example && <p className="example">{example}</p>}
                 </div>
               </div>
             );

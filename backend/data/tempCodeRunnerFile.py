@@ -1,0 +1,1 @@
+strong.replace_with('_' * len(strong.get_text()))
