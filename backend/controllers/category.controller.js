@@ -189,11 +189,54 @@ const get_words_with_ids = async (req, res) => {
   }
 }
 
+/**
+ * Xóa category và tất cả words trong category đó
+ * 
+ * @desc Xóa chủ đề và toàn bộ từ vựng thuộc chủ đề đó
+ * @route DELETE /category/:id
+ * @access Admin only
+ * @param {String} req.params.id - ID của category cần xóa
+ * @returns {Object} Thông báo kết quả xóa
+ */
+const delete_category_by_id = async (req, res) => {
+  try {
+    const categoryId = req.params.id;
+    
+    // Kiểm tra category có tồn tại không
+    const category = await Category.findById(categoryId);
+    if (!category) {
+      return res.status(404).json({ message: "Category not found" });
+    }
+    
+    // Lấy danh sách IDs của words trong category
+    const wordIds = category.words || [];
+    
+    // Xóa tất cả words thuộc category này
+    if (wordIds.length > 0) {
+      const deletedWords = await Word.deleteMany({ _id: { $in: wordIds } });
+      console.log(`Deleted ${deletedWords.deletedCount} words from category: ${category.categoryTopic}`);
+    }
+    
+    // Xóa category
+    await Category.findByIdAndDelete(categoryId);
+    
+    res.status(200).json({ 
+      message: "Category and all associated words deleted successfully",
+      deletedCategory: category.categoryTopic,
+      deletedWordsCount: wordIds.length
+    });
+  } catch (error) {
+    console.error('Error deleting category:', error);
+    res.status(500).json({ message: error.message });
+  }
+}
+
 module.exports = {
   create_category,
   get_all_categories,
   get_category_by_id,
   update_category_by_id,
+  delete_category_by_id,
   get_words_in_category,
   get_words_with_ids
 }

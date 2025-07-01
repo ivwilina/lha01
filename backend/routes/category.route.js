@@ -6,6 +6,7 @@
  * - GET /category/: Lấy tất cả categories
  * - GET /category/list/:id: Lấy category theo ID
  * - PUT /category/update/:id: Cập nhật category
+ * - DELETE /category/delete/:id: Xóa category và tất cả words
  * - GET /category/words/:id: Lấy words trong category
  * - POST /category/words-with-ids: Lấy words theo IDs
  * 
@@ -32,6 +33,9 @@ router.get("/words/:id", controller.get_words_in_category);
 
 //* Cập nhật category theo ID
 router.put("/update/:id", controller.update_category_by_id);
+
+//* Xóa category và tất cả words trong category
+router.delete("/delete/:id", controller.delete_category_by_id);
 
 //* Lấy words theo IDs cụ thể
 router.post("/words-with-ids", controller.get_words_with_ids);

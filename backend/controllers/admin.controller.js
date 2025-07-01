@@ -17,6 +17,8 @@ const Admin = require('../models/admin.model');
 const User = require('../models/user.model');
 const Category = require('../models/category.model');
 const Word = require('../models/word.model');
+const Learning = require('../models/learning.model');
+const Quiz = require('../models/quiz.model');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const csv = require('csv-parser');
@@ -477,11 +479,20 @@ exports.updateCategory = async (req, res) => {
   }
 };
 
+/**
+ * Xóa chủ đề và tất cả dữ liệu liên quan
+ * 
+ * @desc Xóa category, toàn bộ words, learning records và quiz records liên quan
+ * @route DELETE /admin/categories/:id
+ * @access Admin only
+ * @param {String} req.params.id - ID của category cần xóa
+ * @returns {Object} Thông báo kết quả và số lượng dữ liệu đã xóa
+ */
 exports.deleteCategory = async (req, res) => {
   try {
     const categoryId = req.params.id;
 
-    // Kiểm tra có từ vựng nào thuộc category này không
+    // Kiểm tra category có tồn tại không
     const category = await Category.findById(categoryId);
     if (!category) {
       return res.status(404).json({ 
@@ -490,18 +501,42 @@ exports.deleteCategory = async (req, res) => {
       });
     }
 
-    if (category.totalWords > 0) {
-      return res.status(400).json({ 
-        success: false, 
-        message: `Không thể xóa chủ đề vì có ${category.totalWords} từ vựng đang sử dụng` 
+    // Lấy danh sách IDs của words trong category
+    const wordIds = category.words || [];
+    let deletedWordsCount = 0;
+    let deletedLearningRecords = 0;
+    let deletedQuizRecords = 0;
+
+    // Xóa tất cả words thuộc category này
+    if (wordIds.length > 0) {
+      const deletedWords = await Word.deleteMany({ _id: { $in: wordIds } });
+      deletedWordsCount = deletedWords.deletedCount;
+      console.log(`Deleted ${deletedWordsCount} words from category: ${category.categoryTopic}`);
+      
+      // Xóa learning records liên quan đến category này
+      const deletedLearning = await Learning.deleteMany({ category: categoryId });
+      deletedLearningRecords = deletedLearning.deletedCount;
+      console.log(`Deleted ${deletedLearningRecords} learning records`);
+      
+      // Xóa quiz records có chứa words từ category này
+      const deletedQuiz = await Quiz.deleteMany({ 
+        words: { $in: wordIds }
       });
+      deletedQuizRecords = deletedQuiz.deletedCount;
+      console.log(`Deleted ${deletedQuizRecords} quiz records`);
     }
 
+    // Xóa category
     await Category.findByIdAndDelete(categoryId);
 
     res.json({
       success: true,
-      message: 'Xóa chủ đề thành công'
+      message: `Xóa chủ đề "${category.categoryTopic}" thành công`,
+      deletedData: {
+        words: deletedWordsCount,
+        learningRecords: deletedLearningRecords,
+        quizRecords: deletedQuizRecords
+      }
     });
   } catch (error) {
     console.error('Delete category error:', error);
